@@ -7,75 +7,77 @@ import com.example.demo.payment.PayPalPaymentStrategy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class OrderTests {
 
-    private static final double FLOWER_PRICE1 = 30.0;
-    private static final double FLOWER_PRICE2 = 50.0;
-    private static final int SEPAL_LENGTH1 = 10;
-    private static final int SEPAL_LENGTH2 = 15;
+    private static final double PRICE_ROSE = 30.0;
+    private static final double PRICE_TULIP = 50.0;
+    private static final int SEPAL_LENGTH_ROSE = 10;
+    private static final int SEPAL_LENGTH_TULIP = 15;
 
     private Order order;
-    private Flower flower1;
-    private Flower flower2;
+    private Flower redRose;
+    private Flower blueTulip;
 
     @BeforeEach
     void setup() {
-        flower1 = new Flower(FlowerColor.RED, SEPAL_LENGTH1, FLOWER_PRICE1, FlowerType.ROSE);
-        flower2 = new Flower(FlowerColor.BLUE, SEPAL_LENGTH2, FLOWER_PRICE2, FlowerType.TULIP);
+        redRose = new Flower(FlowerColor.RED, SEPAL_LENGTH_ROSE, PRICE_ROSE, FlowerType.ROSE);
+        blueTulip = new Flower(FlowerColor.BLUE, SEPAL_LENGTH_TULIP, PRICE_TULIP, FlowerType.TULIP);
 
-        List<Item> items = new ArrayList<>(List.of(flower1));
+        List<Item> items = new ArrayList<>(List.of(redRose));
         order = new Order(items, new DHLDeliveryStrategy(), new CreditCardPaymentStrategy());
     }
 
     @Test
     void testCalculateTotalPrice() {
-        double expectedTotal = FLOWER_PRICE1;
-        assertEquals(expectedTotal, order.calculateTotalPrice());
+        double expectedTotal = PRICE_ROSE;
+        Assertions.assertEquals(expectedTotal, order.calculateTotalPrice());
 
-        // Add another flower and check total price
-        order.addItem(flower2);
-        expectedTotal += FLOWER_PRICE2;
-        assertEquals(expectedTotal, order.calculateTotalPrice());
+        order.addItem(blueTulip);
+        expectedTotal += PRICE_TULIP;
+        Assertions.assertEquals(expectedTotal, order.calculateTotalPrice());
     }
 
     @Test
     void testAddItem() {
-        order.addItem(flower2);
-        assertEquals(2, order.getItems().size());
+        order.addItem(blueTulip);
+        Assertions.assertEquals(2, order.getItems().size());
     }
 
     @Test
     void testRemoveItem() {
-        order.addItem(flower2);
-        order.removeItem(flower1);
-        assertEquals(1, order.getItems().size());
-        assertEquals(flower2, order.getItems().get(0));
+        order.addItem(blueTulip);
+        order.removeItem(redRose);
+        Assertions.assertEquals(1, order.getItems().size());
+        Assertions.assertEquals(blueTulip, order.getItems().get(0));
     }
 
     @Test
     void testDeliveryAndPaymentStrategies() {
         String deliveryMessage = order.getDelivery().deliver(order.getItems());
-        assertEquals("Delivered with DHL", deliveryMessage);
+        Assertions.assertEquals("Delivered with DHL", deliveryMessage);
 
         String paymentMessage = order.getPayment().pay(order.calculateTotalPrice());
-        assertEquals("Paid with credit card!", paymentMessage);
+        Assertions.assertEquals("Paid with credit card!", paymentMessage);
     }
 
     @Test
     void testPostDeliveryAndPayPalPaymentStrategies() {
-        // Reinitialize order with PostDeliveryStrategy and PayPalPaymentStrategy
-        order = new Order(new ArrayList<>(List.of(flower1)), new PostDeliveryStrategy(), new PayPalPaymentStrategy());
+
+        order = new Order(
+                new ArrayList<>(List.of(redRose)),
+                new PostDeliveryStrategy(),
+                new PayPalPaymentStrategy()
+        );
 
         String deliveryMessage = order.getDelivery().deliver(order.getItems());
-        assertEquals("Delivered with Post", deliveryMessage);
+        Assertions.assertEquals("Delivered with Post", deliveryMessage);
 
         String paymentMessage = order.getPayment().pay(order.calculateTotalPrice());
-        assertEquals("Paid with paypal!", paymentMessage);
+        Assertions.assertEquals("Paid with paypal!", paymentMessage);
     }
 }

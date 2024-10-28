@@ -2,8 +2,7 @@ package com.example.demo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions;
 
 class FlowerTests {
 
@@ -16,35 +15,38 @@ class FlowerTests {
 
     @BeforeEach
     void setup() {
-        flower = new Flower(TEST_COLOR, TEST_SEPAL_LENGTH, TEST_PRICE, TEST_TYPE);
+        flower = new Flower(TEST_COLOR, TEST_SEPAL_LENGTH,
+        TEST_PRICE, TEST_TYPE);
     }
 
     @Test
     void testGetColor() {
-        assertEquals(TEST_COLOR.toString(), flower.getColor());
+        Assertions.assertEquals(TEST_COLOR.toString(), flower.getColor());
     }
 
     @Test
     void testGetSepalLength() {
-        assertEquals(TEST_SEPAL_LENGTH, flower.getSepalLength());
+        Assertions.assertEquals(TEST_SEPAL_LENGTH, flower.getSepalLength());
     }
 
     @Test
     void testPrice() {
-        assertEquals(TEST_PRICE, flower.price());
+        Assertions.assertEquals(TEST_PRICE, flower.price());
     }
 
     @Test
     void testGetFlowerType() {
-        assertEquals(TEST_TYPE, flower.getFlowerType());
+        Assertions.assertEquals(TEST_TYPE, flower.getFlowerType());
     }
 
     @Test
     void testCopyConstructor() {
         Flower copiedFlower = new Flower(flower);
-        assertEquals(flower.getColor(), copiedFlower.getColor());
-        assertEquals(flower.getSepalLength(), copiedFlower.getSepalLength());
-        assertEquals(flower.price(), copiedFlower.price());
-        assertEquals(flower.getFlowerType(), copiedFlower.getFlowerType());
+        Assertions.assertEquals(flower.getColor(), copiedFlower.getColor());
+        Assertions.assertEquals(flower.getSepalLength(),
+        copiedFlower.getSepalLength());
+        Assertions.assertEquals(flower.price(), copiedFlower.price());
+        Assertions.assertEquals(flower.getFlowerType(),
+        copiedFlower.getFlowerType());
     }
 }
