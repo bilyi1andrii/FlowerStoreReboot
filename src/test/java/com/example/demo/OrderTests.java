@@ -25,11 +25,14 @@ class OrderTests {
 
     @BeforeEach
     void setup() {
-        redRose = new Flower(FlowerColor.RED, SEPAL_LENGTH_ROSE, PRICE_ROSE, FlowerType.ROSE);
-        blueTulip = new Flower(FlowerColor.BLUE, SEPAL_LENGTH_TULIP, PRICE_TULIP, FlowerType.TULIP);
+        redRose = new Flower(FlowerColor.RED,
+        SEPAL_LENGTH_ROSE, PRICE_ROSE, FlowerType.ROSE);
+        blueTulip = new Flower(FlowerColor.BLUE,
+        SEPAL_LENGTH_TULIP, PRICE_TULIP, FlowerType.TULIP);
 
         List<Item> items = new ArrayList<>(List.of(redRose));
-        order = new Order(items, new DHLDeliveryStrategy(), new CreditCardPaymentStrategy());
+        order = new Order(items, new DHLDeliveryStrategy(),
+        new CreditCardPaymentStrategy());
     }
 
     @Test
@@ -58,11 +61,15 @@ class OrderTests {
 
     @Test
     void testDeliveryAndPaymentStrategies() {
-        String deliveryMessage = order.getDelivery().deliver(order.getItems());
-        Assertions.assertEquals("Delivered with DHL", deliveryMessage);
+        String deliveryMessage = order.getDelivery()
+        .deliver(order.getItems());
+        Assertions.assertEquals("Delivered with DHL",
+        deliveryMessage);
 
-        String paymentMessage = order.getPayment().pay(order.calculateTotalPrice());
-        Assertions.assertEquals("Paid with credit card!", paymentMessage);
+        String paymentMessage = order.getPayment()
+        .pay(order.calculateTotalPrice());
+        Assertions.assertEquals("Paid with credit card!",
+        paymentMessage);
     }
 
     @Test
@@ -74,10 +81,14 @@ class OrderTests {
                 new PayPalPaymentStrategy()
         );
 
-        String deliveryMessage = order.getDelivery().deliver(order.getItems());
-        Assertions.assertEquals("Delivered with Post", deliveryMessage);
+        String deliveryMessage = order
+        .getDelivery().deliver(order.getItems());
+        Assertions.assertEquals("Delivered with Post",
+        deliveryMessage);
 
-        String paymentMessage = order.getPayment().pay(order.calculateTotalPrice());
-        Assertions.assertEquals("Paid with paypal!", paymentMessage);
+        String paymentMessage = order
+        .getPayment().pay(order.calculateTotalPrice());
+        Assertions.assertEquals("Paid with paypal!",
+        paymentMessage);
     }
 }
