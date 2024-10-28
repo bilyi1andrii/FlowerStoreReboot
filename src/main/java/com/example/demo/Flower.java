@@ -1,19 +1,31 @@
 package com.example.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter @Entity
+@Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
 public class Flower extends Item {
-    @Id
-    private String name;
-    private String color;
+    private FlowerColor color;
+    private int sepalLength;
+    private double price;
+    private FlowerType flowerType;
 
+    public Flower(Flower flower) {
+        color = flower.color;
+        sepalLength = flower.sepalLength;
+        price = flower.price;
+        flowerType = flower.flowerType;
+    }
 
-    public Flower(String name, String color) {
-        this.name = name;
-        this.color = color;
+    public double price() {
+        return this.price;
+    }
+
+    public String getColor() {
+        return color.toString();
     }
 }
