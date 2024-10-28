@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @AutoConfigureMockMvc
 class DemoApplicationTests {
 
-	private static final String COLOR_RED = "#FF0000";
+    private static final String COLOR_RED = "#FF0000";
     private static final String COLOR_BLUE = "#0000FF";
     private static final int SEPAL_LENGTH_TULIP = 12;
     private static final int SEPAL_LENGTH_ROSE = 7;
@@ -35,9 +35,9 @@ class DemoApplicationTests {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/flowers"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content()
-				.contentType("application/json"))
+                .contentType("application/json"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].color")
-				.value(COLOR_RED))
+                .value(COLOR_RED))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].sepalLength")
                         .value(SEPAL_LENGTH_TULIP))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].price")
@@ -45,7 +45,7 @@ class DemoApplicationTests {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].flowerType")
                         .value(TYPE_TULIP))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].color")
-				.value(COLOR_BLUE))
+                .value(COLOR_BLUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].sepalLength")
                         .value(SEPAL_LENGTH_ROSE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].price")
