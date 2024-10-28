@@ -6,6 +6,6 @@ import com.example.demo.Item;
 
 public interface Delivery {
 
-    public String deliver(List<Item> items);
+    String deliver(List<Item> items);
 
 }

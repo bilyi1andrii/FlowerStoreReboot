@@ -1,4 +1,4 @@
-package com.example.demo.flowerStore.controller;
+package com.example.demo.flowerstore.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +14,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/flowers")
 public class FlowerController {
+    private static final int SEPAL_LENGTHM = 7;
+    private static final int SEPAL_LENGTHB = 12;
+
+    private static final double PRICE_MIN = 30;
+    private static final double PRICE_MAX = 60;
+
 
 
     @GetMapping
@@ -21,32 +27,14 @@ public class FlowerController {
         return List.of(
             new Flower(
             FlowerColor.RED,
-            12,
-            30.0,
+            SEPAL_LENGTHB,
+            PRICE_MIN,
             FlowerType.TULIP
             ),
             new Flower(
             FlowerColor.BLUE,
-            7,
-            60.0,
-            FlowerType.ROSE
-            ),
-            new Flower(
-            FlowerColor.WHITE,
-            3,
-            10.0,
-            FlowerType.CHAMOMILE
-            ),
-            new Flower(
-            FlowerColor.YELLOW,
-            20,
-            100.0,
-            FlowerType.TULIP
-            ),
-            new Flower(
-            FlowerColor.GREEN,
-            12,
-            77.0,
+            SEPAL_LENGTHM,
+            PRICE_MAX,
             FlowerType.ROSE
             ));
     }
