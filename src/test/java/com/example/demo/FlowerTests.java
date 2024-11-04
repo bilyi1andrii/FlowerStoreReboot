@@ -2,6 +2,11 @@ package com.example.demo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.example.demo.flowerstore.model.Flower;
+import com.example.demo.flowerstore.model.FlowerColor;
+import com.example.demo.flowerstore.model.FlowerType;
+
 import org.junit.jupiter.api.Assertions;
 
 class FlowerTests {

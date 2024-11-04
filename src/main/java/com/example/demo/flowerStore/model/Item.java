@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.flowerstore.model;
 
 
 public abstract class Item {
@@ -11,6 +11,6 @@ public abstract class Item {
         return this.description;
     }
 
-    abstract double price();
+    public abstract double price();
 
 }

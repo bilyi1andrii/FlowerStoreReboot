@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.flowerstore.model;
 
 public enum FlowerColor {
     RED("#FF0000"),

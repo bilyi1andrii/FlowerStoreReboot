@@ -2,6 +2,11 @@ package com.example.demo;
 
 import com.example.demo.delivery.DHLDeliveryStrategy;
 import com.example.demo.delivery.PostDeliveryStrategy;
+import com.example.demo.flowerstore.model.Flower;
+import com.example.demo.flowerstore.model.FlowerColor;
+import com.example.demo.flowerstore.model.FlowerType;
+import com.example.demo.flowerstore.model.Item;
+import com.example.demo.flowerstore.model.Order;
 import com.example.demo.payment.CreditCardPaymentStrategy;
 import com.example.demo.payment.PayPalPaymentStrategy;
 
