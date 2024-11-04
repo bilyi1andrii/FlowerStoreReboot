@@ -30,8 +30,8 @@ public class DecoratorTests {
         BASE_PRICE_BASKET_TEST, FlowerType.ROSE);
         flower = new BasketDecorator(flower);
 
-        Assertions.assertEquals("Class: Flower of flowerstore in a basket wrapper!",
-        flower.getDescription());
+        Assertions.assertEquals("Class: Flower of flowerstore "
+        + "in a basket wrapper!", flower.getDescription());
         Assertions.assertEquals(BASE_PRICE_BASKET_TEST + BASKET_PRICE,
         flower.price(), ASSERTION_TOLERANCE);
     }
@@ -42,8 +42,8 @@ public class DecoratorTests {
         BASE_PRICE_PAPER_TEST, FlowerType.TULIP);
         flower = new PaperDecorator(flower);
 
-        Assertions.assertEquals("Class: Flower of flowerstore in a paper wrapper!",
-        flower.getDescription());
+        Assertions.assertEquals("Class: Flower of flowerstore "
+        + "in a paper wrapper!", flower.getDescription());
         Assertions.assertEquals(BASE_PRICE_PAPER_TEST + PAPER_PRICE,
         flower.price(), ASSERTION_TOLERANCE);
     }
@@ -54,8 +54,8 @@ public class DecoratorTests {
         BASE_PRICE_RIBBON_TEST, FlowerType.CHAMOMILE);
         flower = new RibbonDecorator(flower);
 
-        Assertions.assertEquals("Class: Flower of flowerstore in a ribbon wrapper!",
-        flower.getDescription());
+        Assertions.assertEquals("Class: Flower of flowerstore "
+        + "in a ribbon wrapper!", flower.getDescription());
         Assertions.assertEquals(BASE_PRICE_RIBBON_TEST + RIBBON_PRICE,
         flower.price(), ASSERTION_TOLERANCE);
     }
