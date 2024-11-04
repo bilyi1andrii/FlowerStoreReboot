@@ -3,6 +3,7 @@ package com.example.demo.flowerstore.model.decorators;
 import com.example.demo.flowerstore.model.Item;
 
 public class PaperDecorator extends ItemDecorator {
+    private static final int OFFPRICE = 13;
 
     public PaperDecorator(Item item) {
         super(item);
@@ -10,11 +11,11 @@ public class PaperDecorator extends ItemDecorator {
 
     @Override
     public String getDescription() {
-        return item.getDescription() + " in a paper wrapper!";
+        return getItem().getDescription() + " in a paper wrapper!";
     }
 
     @Override
     public double price() {
-        return 13 + item.price();
+        return OFFPRICE + getItem().price();
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class FlowerService {
-    public final FlowerRepository flowerRepository;
+    private final FlowerRepository flowerRepository;
 
     @Autowired
     public FlowerService(FlowerRepository flowerRepository) {

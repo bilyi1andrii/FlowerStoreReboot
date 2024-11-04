@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.flowerstore.model.Flower;
 
 @Repository
-public interface FlowerRepository extends JpaRepository<Flower, Long>{
+public interface FlowerRepository extends JpaRepository<Flower, Long> {
 }
