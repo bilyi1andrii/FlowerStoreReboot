@@ -57,7 +57,8 @@ public class AppUserControllerTests {
     void testListAppUsers() throws Exception {
         AppUser userOne = new AppUser(emailOne, dobOne);
         AppUser userTwo = new AppUser(emailTwo, dobTwo);
-        Mockito.when(appUserService.list()).thenReturn(List.of(userOne, userTwo));
+        Mockito.when(appUserService.list())
+        .thenReturn(List.of(userOne, userTwo));
 
         mockMvc.perform(MockMvcRequestBuilders.get(apiUsers))
                 .andExpect(MockMvcResultMatchers.status().isOk())
