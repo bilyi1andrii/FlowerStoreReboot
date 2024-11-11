@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.flowerstore;
 
 import com.example.demo.flowerstore.model.Flower;
 import com.example.demo.flowerstore.model.FlowerColor;

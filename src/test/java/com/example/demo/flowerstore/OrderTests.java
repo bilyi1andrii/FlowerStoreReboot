@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.flowerstore;
 
 import com.example.demo.delivery.DHLDeliveryStrategy;
 import com.example.demo.delivery.PostDeliveryStrategy;
