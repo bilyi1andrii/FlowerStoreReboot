@@ -14,7 +14,7 @@ import com.example.demo.flowerstore.model.AppUser;
 @Service
 public class AppUserService {
 
-    public final AppUserRepository appUserRepository;
+    private final AppUserRepository appUserRepository;
 
     @Autowired
     public AppUserService(AppUserRepository appUserRepository) {

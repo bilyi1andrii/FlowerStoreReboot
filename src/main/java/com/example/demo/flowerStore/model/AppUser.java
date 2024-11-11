@@ -33,13 +33,13 @@ public class AppUser {
     @Transient
     private Integer age;
 
-    public String getEmail() {
-        return this.email;
-    }
-
     public AppUser(String email, LocalDate dob) {
         this.email = email;
         this.dob = dob;
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 
     public Integer getAge() {

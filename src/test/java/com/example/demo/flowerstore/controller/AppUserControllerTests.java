@@ -23,12 +23,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebMvcTest(AppUserController.class)
 public class AppUserControllerTests {
 
-    private final String API_USERS = "/api/appusers";
-    private final String EMAIL_1 = "user1@example.com";
-    private final String EMAIL_2 = "user2@example.com";
-    private final String NEW_EMAIL = "newuser@example.com";
-    private final LocalDate DOB_1 = LocalDate.of(1990, 1, 1);
-    private final LocalDate DOB_2 = LocalDate.of(1992, 2, 2);
+    private final String apiUsers = "/api/appusers";
+    private final String emailOne = "user1@example.com";
+    private final String emailTwo = "user2@example.com";
+    private final String newEmail = "newuser@example.com";
+    private final LocalDate dobOne = LocalDate.of(1990, 1, 1);
+    private final LocalDate dobTwo = LocalDate.of(1992, 2, 2);
 
     @Autowired
     private MockMvc mockMvc;
@@ -40,32 +40,32 @@ public class AppUserControllerTests {
     private ObjectMapper objectMapper;
 
     @Test
-    void testCreateAppUser_Success() throws Exception {
-        AppUser newUser = new AppUser(NEW_EMAIL, DOB_1);
+    void testCreateAppUserSuccess() throws Exception {
+        AppUser newUser = new AppUser(newEmail, dobOne);
         Mockito.when(appUserService.create(ArgumentMatchers.any(AppUser.class)))
                 .thenReturn(newUser);
 
-        mockMvc.perform(MockMvcRequestBuilders.post(API_USERS)
+        mockMvc.perform(MockMvcRequestBuilders.post(apiUsers)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(newUser)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email")
-                        .value(NEW_EMAIL));
+                        .value(newEmail));
     }
 
     @Test
     void testListAppUsers() throws Exception {
-        AppUser user1 = new AppUser(EMAIL_1, DOB_1);
-        AppUser user2 = new AppUser(EMAIL_2, DOB_2);
-        Mockito.when(appUserService.list()).thenReturn(List.of(user1, user2));
+        AppUser userOne = new AppUser(emailOne, dobOne);
+        AppUser userTwo = new AppUser(emailTwo, dobTwo);
+        Mockito.when(appUserService.list()).thenReturn(List.of(userOne, userTwo));
 
-        mockMvc.perform(MockMvcRequestBuilders.get(API_USERS))
+        mockMvc.perform(MockMvcRequestBuilders.get(apiUsers))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()")
                         .value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].email")
-                        .value(EMAIL_1))
+                        .value(emailOne))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].email")
-                        .value(EMAIL_2));
+                        .value(emailTwo));
     }
 }
